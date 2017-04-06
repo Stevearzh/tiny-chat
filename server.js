@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const http  = require('http'),
       fs    = require('fs'),
       path  = require('path'),
@@ -46,9 +48,9 @@ const server = http.createServer((request, response) => {
   let filePath = false;
 
   if (request.url === '/') {
-    filePath = 'client/index.html';
+    filePath = 'public/index.html';
   } else {
-    filePath = 'client' + request.url;
+    filePath = 'public' + request.url;
   }
 
   const absPath = './' + filePath;
