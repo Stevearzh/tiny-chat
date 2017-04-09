@@ -1,9 +1,15 @@
 #!/usr/bin/env node
 
+require("babel-register");
+require("babel-polyfill");
+
 const http  = require('http'),
       fs    = require('fs'),
       path  = require('path'),
       mime  = require('mime');
+
+const chatServer = require('./server/chat_server');
+
 let   cache = {};
 
 const send404 = response => {
@@ -58,3 +64,4 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(3000, () => console.log('Server listening on port 3000.'));
+chatServer.listen(server);
